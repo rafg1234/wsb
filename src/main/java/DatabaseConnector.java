@@ -1,4 +1,3 @@
-import org.apache.tomcat.jdbc.pool.interceptor.StatementCacheMBean;
 
 import java.sql.*;
 
@@ -18,7 +17,7 @@ public class DatabaseConnector {
 
         } catch (Exception e) {
             e.printStackTrace();
-            System.out.println("Dupa");
+            System.out.println("Niestety nie udało się");
         }
     }
 
@@ -30,5 +29,10 @@ public class DatabaseConnector {
     public ResultSet executeSelect(String sql) throws SQLException {
         Statement stm = this.connection.createStatement();
         return stm.executeQuery(sql);
+    }
+
+    public int executeUpdateOrDelete(String sql) throws SQLException {
+        Statement stm = this.connection.createStatement();
+        return stm.executeUpdate(sql);
     }
 }
